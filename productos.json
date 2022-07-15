@@ -1,0 +1,42 @@
+{
+    "productos": [
+    {
+        "id": 1,
+        "nombre": "Aceite Elf 15w-50",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_673721-MLA49909505823_052022-O.webp",
+        "precio": 6641
+    },
+    {
+        "id": 2,
+        "nombre": "Aceite Gulf 5w-40",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_729393-MLA48697733859_122021-O.webp",
+        "precio": 5350
+    },
+    {
+        "id": 3,
+        "nombre": "Aceite Total Quartz 5w-40",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_808156-MLA49308169453_032022-O.webp",
+        "precio": 10837
+    },
+    {
+        "id": 4,
+        "nombre": "Batería Herbo",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_907361-MLA41149583710_032020-O.webp",
+        "precio": 13727
+    },
+    {
+        "id": 5,
+        "nombre": "Kit Combo Ranger 3.0",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_734827-MLA46439469007_062021-O.webp",
+        "precio": 8786
+    },
+    {
+        "id": 6,
+        "nombre": "Filtro Aceite Mann",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_989406-MLA46724731628_072021-O.webp",
+        "precio": 852
+    }
+],
+
+"sugeridos" : ["Aceites", "Filtros", "Baterías", "Lámparas", "Escobillas"]
+}

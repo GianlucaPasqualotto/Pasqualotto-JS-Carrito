@@ -1,0 +1,61 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Rapid Lube Service</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.11.0/main.css,npm/fullcalendar@5.11.0/main.min.css">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <h2 id="saludo"></h2>
+    <div id="contFormulario">
+    <p>Ingresa tus datos para comenzar</p>
+        <form id="formulario">
+            <input id="nombre" type="text"  placeholder="Nombre" >
+            <input id="apellido" type="text"placeholder="Apellido">
+            <input id="auto" type="text"placeholder="Auto">
+            <input id="modelo" type="text"placeholder="Modelo">
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+    <div id="saludoUsuario"></div>
+    <div id="contenido"></div>
+    <div class="contenedor">
+        <div class="contenido-productos">
+            <div class="titulo">
+                <h1>Tienda Rapid Lube Service</h1>
+            </div>
+            <div>
+                <h3 class="texto">Listado de Productos</h3>
+                <div class="buscador">
+                    <form id="formulario-buscador">
+                        <input autocomplete="off" id="buscador-producto" type="text" placeholder="Buscar un producto" name="producto">
+                    </form>
+                    <ul id="sugeridos"></ul>
+                </div>
+                <ul id="listado"></ul>
+            </div>
+        </div>
+        <div class="carrito">
+            <h4>Carrito</h4>
+            <div id="carrito"></div>
+        </div>    
+    
+    </div>
+    <h2>¡Agendar turno!</h2>
+    <div id='calendar'></div>
+    <button id="myBtn">Agendar turno</button>
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.11.0,npm/fullcalendar@5.11.0/locales-all.js,npm/fullcalendar@5.11.0/locales-all.min.js,npm/fullcalendar@5.11.0/main.js"></script>
+    
+    <script src="carrito.js"></script>
+    <script src="animaciones.js"></script>
+</body>
+
+</html>

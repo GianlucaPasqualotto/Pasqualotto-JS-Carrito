@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    margin: 5px 0 0 0;
+    text-align: start;
+    font-size: 25px;
+    color: blue;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 20px;
+    color: blue;
+}
+h2 {
+    padding-top: 5px;
+    color: blue;
+    text-align: center;
+}
+
+.contenedor {
+    display: flex;
+    height: 100vh;
+}
+
+.contenido-productos {
+    flex: 1;
+}
+
+#titulo {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.texto {
+    text-align: center;
+    font-size: 30px;
+}
+
+.buscador {
+    text-align: center;
+    position: relative;
+}
+
+#sugeridos {
+    position: absolute;
+    padding: 0; 
+    list-style: none;
+    background-color:lavender;
+    width: 300px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+#buscador-producto {
+    width: 300px;
+    height: 40px;
+}
+
+#listado {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    flex-wrap: wrap;
+}
+
+.producto {
+    padding-top: 100px;
+    width: 250px;
+    margin-right: 10px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.producto img {
+    width: 70%;
+}
+
+.imagen-producto {
+    width: 200px;
+    height: 200px;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.nombre {
+    font-size: 20px;
+    color: blue;
+}
+
+.precio {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.carrito {
+    min-width: 400px;
+    max-width: 400px;
+    border-left: 1px solid #ececec;
+    text-align: center;
+    padding: 20px 0 0 0;
+    background-color: #efefef;
+}
+
+#carrito {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.producto-carrito {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.producto-carrito img {
+    width: 100px;
+} 
+
+.descripcion-producto {
+    text-align: left;
+    padding: 20px;
+}
+
+.boton-eliminar {
+    cursor: pointer;
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: none;
+    border: none;
+}
+
+#calendar {
+    max-width: 100px 100px 100px 100px;
+    margin: 100px 100px 50px 100px;
+}
+
+#myBtn {
+    width: 25%;
+    margin: 5px 20px 20px 1650px;
+    background-color:chartreuse;
+}
