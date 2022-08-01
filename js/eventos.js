@@ -2,12 +2,12 @@
 const bienvenida = localStorage.getItem('bienvenida');
 let nombreUsuario = localStorage.getItem('nombreUsuario');
 let apellidoUsuario = localStorage.getItem('apellidoUsuario');
-let autoUsuario = sessionStorage.getItem('autoUsuario');
-let modeloUsuario = sessionStorage.getItem('modeloUsuario');
-let inputNombre = sessionStorage.getItem('inputNombre');
-let inputApellido = sessionStorage.getItem('inputApellido');
-let inputAuto = sessionStorage.getItem('inputAuto');
-let inputModelo = sessionStorage.getItem('inputModelo');
+let autoUsuario = localStorage.getItem('autoUsuario');
+let modeloUsuario = localStorage.getItem('modeloUsuario');
+let inputNombre = localStorage.getItem('inputNombre');
+let inputApellido = localStorage.getItem('inputApellido');
+let inputAuto = localStorage.getItem('inputAuto');
+let inputModelo = localStorage.getItem('inputModelo');
 
 //Variables DOM
 const saludoUsuario = document.querySelector('#saludoUsuario');
@@ -18,13 +18,21 @@ const auto = document.querySelector('#auto');
 const modelo = document.querySelector('#modelo');
 const contFormulario = document.querySelector('#contFormulario');
 const contenido = document.querySelector('#contenido');
+const borrarUsuario = document.querySelector('#borrarUsuario');
+const btnSalir = document.querySelector('#btn-salir');
+const contenidoBody = document.querySelector('#contenidoBody');
+
+btnSalir.style.display = 'none';
+contenidoBody.style.display = 'none';
+saludoUsuario.innerHTML = bienvenida;
 
 // Funciones
 const ocultarFormulario = () => {
     contFormulario.style.display = 'none';
+    btnSalir.style.display = 'flex';
+    contenidoBody.style.display = 'block';
     contenido.innerHTML = `Hola ${nombreUsuario} ${apellidoUsuario}. Tienes un ${autoUsuario} ${modeloUsuario}.`
 }
-saludoUsuario.innerHTML = bienvenida;
 
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -37,40 +45,18 @@ formulario.addEventListener('submit', (e) => {
     localStorage.setItem('apellidoUsuario', apellido.value);
     localStorage.setItem('autoUsuario', auto.value);
     localStorage.setItem('modeloUsuario', modelo.value);
-    ocultarFormulario();
+    ocultarFormulario()
 })
 
-if (!!nombreUsuario && !!apellidoUsuario && !!autoUsuario && !!modeloUsuario) {
-    ocultarFormulario();
+if (nombreUsuario != null) {
+    ocultarFormulario()
 }
 
-nombre.value = inputNombre;
-apellido.value = inputApellido;
-auto.value = inputAuto;
-modelo.value = inputModelo;
-
-nombre.addEventListener('input', (e) => {
-    sessionStorage.setItem('inputNombre', e.target.value)
-})
-apellido.addEventListener('input', (e) => {
-    sessionStorage.setItem('inputApellido', e.target.value)
-})
-auto.addEventListener('input', (e) => {
-    sessionStorage.setItem('inputAuto', e.target.value)
-})
-modelo.addEventListener('input', (e) => {
-    sessionStorage.setItem('inputModelo', e.target.value)
-})
-
 //E-Commerce
-// CONSTANTES
-let productosSugeridos = [];
 
 // CONSTANTES EVENTOS
-const sugeridos = document.getElementById("sugeridos");
 const listaProductos = document.getElementById("listado");
 const precioElementos = document.getElementById("precio");
-const buscadorProducto = document.getElementById("buscador-producto");
 
 // FUNCIONES
 const clickProducto = (producto) => {
@@ -89,10 +75,12 @@ const insertarProductosEnElDom = (productos) => {
             <img src="${producto.imagen}">
         </div>
         <p class="nombre">${producto.nombre}</p>
-        <p class="precio">$${producto.precio}</p>    
+        <p class="precio">$ ${producto.precio}</p>    
         `;
-    contenidoProducto.onclick = () => {clickProducto(producto)};
-    listaProductos.appendChild(contenidoProducto);
+        contenidoProducto.onclick = () => {
+            clickProducto(producto)
+        };
+        listaProductos.appendChild(contenidoProducto);
     }
 }
 
@@ -105,7 +93,7 @@ const insertarProductos = () => {
             if (res) {
                 resolve(productos);
             } else {
-            reject(400);
+                reject(400);
             }
         }, 2000)
     })
@@ -113,10 +101,9 @@ const insertarProductos = () => {
 
 // FETCH PRODUCTOS
 const insertarProductosAJAX = () => {
-    fletch('./productos.json')
+    fletch('./datos/productos.json')
         .then(respuesta => respuesta.json())
         .then(resultados => {
-            console.log(resultados);
             for (const producto of resultados) {
                 let contenidoProducto = document.createElement("li");
                 contenidoProducto.className = "producto";
@@ -128,8 +115,10 @@ const insertarProductosAJAX = () => {
                 <p class="nombre">${producto.nombre}</p>
                 <p class="precio">${producto.precio}</p>
                 `;
-            contenidoProducto.onclick = () => {clickProducto(producto)};
-            listaProductos.appendChild(contenidoProducto);
+                contenidoProducto.onclick = () => {
+                    clickProducto(producto)
+                };
+                listaProductos.appendChild(contenidoProducto);
             }
         }).catch(error => {
             alert('No hay resultados');
@@ -139,10 +128,9 @@ const insertarProductosAJAX = () => {
 //FETCH PRODUCTOS ASYNC/AWAIT
 const insertarProductosAsync = async () => {
     try {
-        const respuesta = await fetch('./productos.json');
+        const respuesta = await fetch('./datos/productos.json');
         const resultados = await respuesta.json();
         insertarProductosEnElDom(resultados.productos);
-        productosSugeridos = resultados.sugeridos;
     } catch {
         alert("Error!");
     } finally {
@@ -152,48 +140,30 @@ const insertarProductosAsync = async () => {
 
 insertarProductosAsync();
 
-const insertarBusquedasSugeridas = () => {
-    for (const sugerido of productosSugeridos) {
-        const li = document.createElement('li');
-        li.classList.add('sugerido');
-        li.innerHTML = sugerido;
-        sugeridos.append(li);
-    }
-}
-
-const quitarBusquedasSugeridas = () => {
-    sugeridos.innerHTML = '';
-}
-
 const verificarStorage = () => {
     if (!!carritoStorage && carritoStorage.length > 0) {
         for (const producto of carritoStorage) {
-            insertarProductosAlDOM (new ProductoEnCarrito(producto));
+            insertarProductosAlDOM(new ProductoEnCarrito(producto));
         }
     }
 }
 
 verificarStorage();
-buscadorProducto.onfocus = () => insertarBusquedasSugeridas();
-buscadorProducto.onblur = () => quitarBusquedasSugeridas();
 
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-    selectable: true,
-    headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    },
-    dateClick: function(info) {
-        // alert('¡Te esperamos! ' + info.dateStr);
-    },
-    select: function(info) {
-        // alert('Tu turno es el día ' + info.startStr );
-    }
+        selectable: true,
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        dateClick: function (info) {
+        },
+        select: function (info) {
+        }
     });
 
     calendar.render();
@@ -219,3 +189,8 @@ btn.addEventListener('click', () => {
         }
     })
 })
+
+const borrarLocal = () => {
+    localStorage.clear(borrarUsuario);
+    document.location.reload()
+}

@@ -4,18 +4,12 @@ body {
     margin: 0;
 }
 
-p {
-    margin: 5px 0 0 0;
-    text-align: start;
-    font-size: 25px;
-    color: blue;
-}
-
 h1 {
     text-align: center;
     padding-top: 20px;
     color: blue;
 }
+
 h2 {
     padding-top: 5px;
     color: blue;
@@ -39,27 +33,6 @@ h2 {
 .texto {
     text-align: center;
     font-size: 30px;
-}
-
-.buscador {
-    text-align: center;
-    position: relative;
-}
-
-#sugeridos {
-    position: absolute;
-    padding: 0; 
-    list-style: none;
-    background-color:lavender;
-    width: 300px;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-}
-
-#buscador-producto {
-    width: 300px;
-    height: 40px;
 }
 
 #listado {
@@ -150,6 +123,5 @@ h2 {
 
 #myBtn {
     width: 25%;
-    margin: 5px 20px 20px 1650px;
-    background-color:chartreuse;
+    margin: 5px 20px 20px 1400px;
 }
