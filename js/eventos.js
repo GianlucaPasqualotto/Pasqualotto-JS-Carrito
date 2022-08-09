@@ -72,13 +72,14 @@ const insertarProductosEnElDom = (productos) => {
         contenidoProducto.id = producto.id;
         contenidoProducto.innerHTML = `
         <div class ="imagen-producto">
-            <img src="${producto.imagen}">
+        <img src="${producto.imagen}">
         </div>
         <p class="nombre">${producto.nombre}</p>
-        <p class="precio">$ ${producto.precio}</p>    
+        <p class="precio">$ ${producto.precio}</p>
+        <button class="btn btn-primary" onClick()>Agregar al Carrito</button>
         `;
         contenidoProducto.onclick = () => {
-            clickProducto(producto)
+        clickProducto(producto)
         };
         listaProductos.appendChild(contenidoProducto);
     }

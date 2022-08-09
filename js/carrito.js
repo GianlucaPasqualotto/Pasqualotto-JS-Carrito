@@ -32,7 +32,7 @@ const carritoStorage = JSON.parse(localStorage.getItem('carrito'));
 var totalProductos = [];
 var sumaTotales = 0;
 
-// total carrito
+// Total carrito
 const Total = document.querySelector('#total');
 
 if (carritoStorage != null) {
@@ -97,7 +97,6 @@ const insertarProductosAlDOM = (producto) => {
 
     contenedor.append(botonEliminar);
     contenedorCarrito.append(contenedor);
-
 }
 
 const insertarCarrito = (producto) => {
@@ -112,7 +111,6 @@ const insertarCarrito = (producto) => {
         carrito.push(producto);
         insertarProductosAlDOM(producto)
         document.location.reload();
-
     }
 }
 
